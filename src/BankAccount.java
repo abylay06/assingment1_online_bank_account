@@ -1,17 +1,17 @@
-public class BankAccount {
+abstract public class BankAccount {
     private int id;
-    private int cash;
+    private double cash;
 
-    public BankAccount(int id, int cash) {
+    public BankAccount(int id, double cash) {
         this.id = id;
         this.cash = cash;
     }
 
-    public void setCash(int cash) {
+    public void setCash(double cash) {
         this.cash = cash;
     }
 
-    public int getCash() {
+    public double getCash() {
         return cash;
     }
 
@@ -19,14 +19,7 @@ public class BankAccount {
         return id;
     }
 
-    public void millionaire() {
-        if (cash > 1000000)
-        {
-            System.out.println("You are a millionaire because you have " + cash + " dollars.");
-        }
-        else
-        {
-            System.out.println("Not millionaire because has " + cash + " dollars.");
-        }
-    }
+    abstract public void setInterestReturn();
+
+    abstract public void displayInfo();
 }

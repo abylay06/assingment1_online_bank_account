@@ -1,35 +1,15 @@
-public class Customer {
-    private int age;
-    private String name;
-    private int id;
+public class Customer extends Person {
 
-    public Customer(int id, int age, String name) {
-        this.id = id;
-        this.age = age;
-        this.name = name;
+    private int accounts;
+
+    public Customer(int id, String name, int age, int accounts) {
+        super(id, name, age);
+        this.accounts = accounts;
     }
 
-    public void setAge(int age) {
-        this.age = age;
-    }
+    public int getAccounts() {return accounts;}
+    public void setAccounts(int accounts) {this.accounts = accounts;}
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void displayInfo() {
-        System.out.println("Name: " + name + ", age: " + age + " id: " + id);
-    }
+    @Override
+    public void myIntro() {System.out.println("My anme is: " + this.getName() + "and I have " + accounts + "bank accounts.");}
 }
