@@ -2,7 +2,7 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
 
-        Customer c = new Customer(1, "Amir", 18, 5);
+        Customer c = new Customer(1, "Amir", 18, new SavingsAccount(1, 500000));
         List<BankAccount> accounts = new ArrayList<>(List.of(
                 new SavingsAccount (1, 10000000),
                 new CreditAccount(2, 10000000),
@@ -15,19 +15,19 @@ public class Main {
 
         System.out.println("Displaying the rich accounts: ");
         for (BankAccount b : accounts) {
-            if (b.getCash() >= 1000000) {richAccounts.add(b); b.displayInfo(); b.setInterestReturn();}
+            if (b.getCash() >= 1000000) {richAccounts.add(b); System.out.println(b.toString()); b.setInterestReturn();}
         }
 
-        System.out.println("finding account of the customer");
+        System.out.println("finding accounts of the customer");
         BankAccount find = null;
         for (BankAccount b : richAccounts) {
-            if (b.getId() == c.getId()) {find = b; b.displayInfo();}
+            if (b.getId() == c.getId()) {find = b; System.out.println(b.toString());}
         }
 
 
-        for (int i = 0; i < richAccounts.size() - 2; i += 1) {
+        for (int i = 0; i < richAccounts.size() - 1; i += 1) {
             boolean swap = false;
-            for (int j = 0; j < richAccounts.size() - 2 - i; j+=1) {
+            for (int j = 0; j < richAccounts.size() - 1 - i; j+=1) {
                 if (richAccounts.get(j).getCash() > richAccounts.get(j+1).getCash()) {
                     BankAccount temp = richAccounts.get(j);
                     richAccounts.set(j, richAccounts.get(j+1));
@@ -38,11 +38,7 @@ public class Main {
             if (swap == false) break;
         }
         System.out.println("Sorted rich list:");
-        for (BankAccount b : richAccounts) {b.displayInfo(); ;}
-
-
-
-
+        for (BankAccount b : richAccounts) {System.out.println(b.toString()); ;}
 
 
     }

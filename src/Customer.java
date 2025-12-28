@@ -1,15 +1,20 @@
+import java.util.*;
 public class Customer extends Person {
 
-    private int accounts;
+    private List<BankAccount> accounts = new ArrayList<>();
 
-    public Customer(int id, String name, int age, int accounts) {
+    public Customer(int id, String name, int age, BankAccount account) {
         super(id, name, age);
-        this.accounts = accounts;
+        this.accounts.add(account);
     }
 
-    public int getAccounts() {return accounts;}
-    public void setAccounts(int accounts) {this.accounts = accounts;}
+    public void getAccounts() {for (BankAccount b : accounts) {System.out.println(b.toString());}}
+
+    public void addAccount(BankAccount b) {accounts.add(b);}
+
+    public void removeAccounts(BankAccount b) {accounts.remove(b);}
+
 
     @Override
-    public void myIntro() {System.out.println("My anme is: " + this.getName() + "and I have " + accounts + "bank accounts.");}
+    public String toString() {return("My name is: " + this.getName() + "and I have " + accounts.size() + "bank accounts.");}
 }

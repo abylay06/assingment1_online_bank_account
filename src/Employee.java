@@ -11,5 +11,5 @@ public class Employee extends Person {
     public void setRole(String role) {this.role = role;}
 
     @Override
-    public void myIntro() {System.out.println("My name is " + this.getName() + "and my role is " + role);}
+    public String toString() {return("My name is " + this.getName() + "and my role is " + role);}
 }

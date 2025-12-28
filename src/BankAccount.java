@@ -21,5 +21,18 @@ abstract public class BankAccount {
 
     abstract public void setInterestReturn();
 
-    abstract public void displayInfo();
+
+    @Override
+    public String toString() {return "id: " + id  + ",cash: " + cash;}
+
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof Person p)) return false;
+        return id == p.getId();
+    }
+
+    @Override
+    public int hashCode() {
+        return id + 7;
+    }
 }

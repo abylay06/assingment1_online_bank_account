@@ -11,7 +11,7 @@ public class RetailBank extends Bank {
     }
 
     @Override
-    public void displayInfo() {
-        System.out.println("Name: " + this.getName() + ", speciality: " + speciality);
+    public String toString() {
+        return ("Name: " + this.getName() + ", speciality: " + speciality);
     }
 }

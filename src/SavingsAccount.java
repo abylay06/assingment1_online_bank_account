@@ -16,5 +16,5 @@ public class SavingsAccount extends BankAccount {
     }
 
     @Override
-    public void displayInfo() {System.out.println("id: " + this.getId() + ", cash: " + this.getCash());}
+    public String toString() {return("id: " + this.getId() + ", cash: " + this.getCash());}
 }

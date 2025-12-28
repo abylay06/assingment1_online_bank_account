@@ -1,5 +1,5 @@
 abstract public class Person {
-    private String  name;
+    private String name;
     private int age;
     private final int id;
 
@@ -15,8 +15,6 @@ abstract public class Person {
     public void setAge(int age) {this.age = age;}
     public void setName(String name) {this.name = name;}
 
-    abstract public void myIntro();
-
     @Override
     public String toString() {return "id: " + id + ",name: " + name + ",age: " + age;}
 
@@ -30,5 +28,6 @@ abstract public class Person {
     public int hashCode() {
         return id + 7;
     }
+
 }
 

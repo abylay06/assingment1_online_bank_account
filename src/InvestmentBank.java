@@ -11,7 +11,7 @@ public class InvestmentBank extends Bank {
     public void setRating(double rating) {this.rating = rating;}
 
     @Override
-    public void displayInfo() {System.out.println("Name: " + this.getName() + ", rating: " + rating);}
+    public String toString() {return("Name: " + this.getName() + ", rating: " + rating);}
 
 
 }

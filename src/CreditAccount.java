@@ -13,5 +13,5 @@ public class CreditAccount extends BankAccount {
     public void setInterestReturn() {this.setCash(this.getCash() * interest); }
 
     @Override
-    public void displayInfo() {System.out.println("id: " + this.getId() + ", cash: " + this.getCash());}
+    public String toString() {return("id: " + this.getId() + ", cash: " + this.getCash());}
 }
