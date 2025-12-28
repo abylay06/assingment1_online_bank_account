@@ -1,8 +1,8 @@
 public class RetailBank extends Bank {
     private final String speciality;
 
-    public RetailBank(String name, boolean isActive, String speciality) {
-        super(name, isActive);
+    public RetailBank(String name, boolean isActive, String speciality, Employee employee) {
+        super(name, isActive, employee);
         this.speciality = speciality;
     }
 

@@ -1,8 +1,8 @@
 public class InvestmentBank extends Bank {
     private double rating;
 
-    public InvestmentBank(String name, boolean isActive, double rating) {
-        super(name, isActive);
+    public InvestmentBank(String name, boolean isActive, double rating, Employee employee) {
+        super(name, isActive, employee);
         this.rating = rating;
     }
 
