@@ -1,8 +1,9 @@
+import java.sql.*;
 import java.util.*;
 public class Main {
     public static void main(String[] args) {
 
-        Customer c = new Customer(1, "Amir", 18, new SavingsAccount(1, 500000));
+       Customer c = new Customer(1, "Amir", 18, new SavingsAccount(1, 500000));
         List<BankAccount> accounts = new ArrayList<>(List.of(
                 new SavingsAccount (1, 10000000),
                 new CreditAccount(2, 10000000),
@@ -39,6 +40,44 @@ public class Main {
         }
         System.out.println("Sorted rich list:");
         for (BankAccount b : richAccounts) {System.out.println(b.toString()); ;}
+        try {
+            Class.forName("org.postgresql.Driver");
+        }
+        catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        try {
+            Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/oop3", "postgres", "0913");
+
+            Statement stmt = con.createStatement();
+
+            stmt.executeUpdate("INSERT INTO credit_accounts (id, cash) VALUES (1, 1000000), (2, 15000), (3, 2500000);" +
+                    " INSERT INTO savings_accounts (id, cash) VALUES (1, 100000), (2, 1300000), (3, 19999);"
+            );
+
+            ResultSet rs = stmt.executeQuery("SELECT * FROM credit_accounts WHERE cash >= 1000000");
+            while (rs.next()) {System.out.println(rs.getInt("id") + " " + rs.getInt("cash"));}
+            rs = stmt.executeQuery("SELECT * FROM savings_accounts WHERE cash >= 1000000");
+            while (rs.next()) {System.out.println(rs.getInt("id") + " " + rs.getString("cash"));}
+
+            stmt.executeUpdate("UPDATE credit_accounts SET cash = cash + 1000000 WHERE cash < 1000000");
+            stmt.executeUpdate(" UPDATE credit_accounts SET cash = cash + 1000000 WHERE cash < 1000000");
+
+            rs = stmt.executeQuery("SELECT * FROM credit_accounts WHERE cash >= 1000000");
+            while (rs.next()) {System.out.println(rs.getInt("id") + " " + rs.getString("cash"));}
+            rs = stmt.executeQuery("SELECT * FROM savings_accounts WHERE cash >= 1000000");
+            while (rs.next()) {System.out.println(rs.getInt("id") + " " + rs.getString("cash"));}
+
+            stmt.executeUpdate("TRUNCATE TABLE savings_accounts, credit_accounts");
+
+            rs.close();
+            stmt.close();
+            con.close();
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+
 
 
     }

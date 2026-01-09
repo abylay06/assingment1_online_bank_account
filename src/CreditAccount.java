@@ -1,7 +1,7 @@
 public class CreditAccount extends BankAccount {
     private final double interest = 1.01;
 
-    CreditAccount(int id, int cash) {
+    CreditAccount(int id, double cash) {
         super(id, cash);
     }
 
