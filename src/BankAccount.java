@@ -20,6 +20,7 @@ abstract public class BankAccount {
     }
 
     abstract public void setInterestReturn();
+    abstract public double getInterest();
 
 
     @Override

@@ -1,5 +1,6 @@
 public class InvestmentBank extends Bank {
     private double rating;
+    public static int number = 5;
 
     public InvestmentBank(String name, boolean isActive, double rating, Employee employee) {
         super(name, isActive, employee);
